@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Docti Connect | Encuentra y agenda con mas claridad</title>
+    <meta
+      name="description"
+      content="Pagina patient-facing de Docti Connect: busqueda de doctores, perfiles, disponibilidad, precios y reservas."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/theme.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <nav class="nav">
+        <div class="nav__inner">
+          <a class="brand" href="/">
+            <span class="brand__mark">D</span>
+            <span>Docti</span>
+          </a>
+          <div class="nav__links">
+            <a href="/">Inicio</a>
+            <a href="/pro/">Docti Pro</a>
+            <a href="/preview/">Demo</a>
+          </div>
+          <div class="nav__cta">
+            <a class="button button--ghost" href="/pro/">Soy doctor</a>
+            <a class="button button--primary" href="#directory" data-scroll-target="directory">Buscar doctores</a>
+          </div>
+        </div>
+      </nav>
+
+      <main>
+        <section class="section hero">
+          <div>
+            <span class="eyebrow">Docti Connect</span>
+            <h1>Encontrar atencion medica deberia sentirse menos confuso.</h1>
+            <p class="lede">
+              Docti Connect organiza la cara paciente del producto: descubrir medicos, revisar
+              disponibilidad, entender precios y reservar con mas confianza y menos friccion.
+            </p>
+            <div class="hero__actions">
+              <a class="button button--primary" href="#directory" data-scroll-target="directory">Explorar directorio</a>
+              <a class="button button--ghost" href="/pro/">Ver lado doctor</a>
+            </div>
+            <div class="hero-badges">
+              <span class="pill">Especialidad</span>
+              <span class="pill">Ubicacion</span>
+              <span class="pill">Precio</span>
+              <span class="pill">Disponibilidad</span>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="surface">
+              <h4>Experiencia reconstruida</h4>
+              <p class="inline-note">Directorio paciente con perfiles verificados, tarifas visibles y una llamada clara a reservar.</p>
+            </div>
+            <div class="grid-2" style="margin-top:16px;">
+              <div class="surface">
+                <h4>Confianza</h4>
+                <p class="inline-note">Perfiles, credenciales y una experiencia de agenda mas transparente.</p>
+              </div>
+              <div class="surface">
+                <h4>Continuidad</h4>
+                <p class="inline-note">Recordatorios y acceso a documentos como parte de la capa paciente del producto.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="directory">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Directorio</span>
+              <h2>Una vista mas creible del marketplace paciente</h2>
+            </div>
+            <p class="section-copy">
+              En vez de una pagina generica, esta version muestra como la propuesta publica de Docti
+              Connect puede sentirse concreta y util al usuario final.
+            </p>
+          </div>
+          <div class="grid-3">
+            <article class="card">
+              <h3>Dra. Elena Paredes</h3>
+              <p>Endocrinologia · Ciudad de Panama · Desde $55</p>
+              <div class="pill-row">
+                <span class="status-chip">Disponible manana</span>
+                <span class="status-chip">Verificada</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Dr. Ricardo Gomez</h3>
+              <p>Medicina general · Costa del Este · Desde $35</p>
+              <div class="pill-row">
+                <span class="status-chip">Consulta virtual</span>
+                <span class="status-chip">Agenda abierta</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Dra. Sofia Morales</h3>
+              <p>Pediatria · San Francisco · Desde $48</p>
+              <div class="pill-row">
+                <span class="status-chip">Sabado disponible</span>
+                <span class="status-chip">Alta demanda</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="grid-2">
+            <article class="card">
+              <h3>Lo que deberia resolver para pacientes</h3>
+              <ul class="list list--check">
+                <li>Menos llamadas y menos mensajes para encontrar una cita</li>
+                <li>Precios y disponibilidad mas visibles antes de reservar</li>
+                <li>Mas confianza en la calidad del doctor que se agenda</li>
+                <li>Historial y documentos accesibles despues de la visita</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Lo que esta representado en este repo</h3>
+              <ul class="list list--check">
+                <li>La narrativa publica del marketplace y sus filtros principales</li>
+                <li>Una experiencia visual mas fuerte que la pagina original</li>
+                <li>Perfiles y tarjetas como demostracion de UX, no como base de datos real</li>
+                <li>Una base clara para una futura reserva funcional</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer__panel">
+          <span>Docti Connect</span>
+          <span>Patient-facing marketplace concept rebuilt for clarity and trust</span>
+        </div>
+      </footer>
+    </div>
+    <script src="/scripts/site.js"></script>
+  </body>
+</html>
