@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Docti Preview | Demo interactivo publico</title>
+    <meta
+      name="description"
+      content="Demo interactivo reconstruido de Docti Pro con un flujo publico de siete pasos."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/theme.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <nav class="nav">
+        <div class="nav__inner">
+          <a class="brand" href="/">
+            <span class="brand__mark">D</span>
+            <span>Docti</span>
+          </a>
+          <div class="nav__links">
+            <a href="/">Inicio</a>
+            <a href="/pro/">Docti Pro</a>
+            <a href="/connect/">Docti Connect</a>
+          </div>
+          <div class="nav__cta">
+            <a class="button button--ghost" href="/pro/">Ver producto</a>
+            <a class="button button--primary" href="/">Volver al inicio</a>
+          </div>
+        </div>
+      </nav>
+
+      <main>
+        <section class="section">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Preview publico</span>
+              <h1 style="font-size: clamp(2.8rem, 6vw, 5rem);">Un demo interactivo mas convincente para Docti Pro</h1>
+            </div>
+            <p class="section-copy">
+              Esta reconstruccion conserva el mapa publico de siete pasos y hace mas legible la historia
+              del producto. Sigue siendo un demo publico, no un sistema medico productivo.
+            </p>
+          </div>
+          <div class="preview-layout" data-preview-root id="preview-root">
+            <aside class="preview-nav panel">
+              <span class="eyebrow">Docti Pro</span>
+              <h3 style="margin-top: 16px;">Flujo interactivo</h3>
+              <p class="inline-note">Dashboard, consulta, motivo, nota, expediente, calendario y voz.</p>
+              <ul class="clean-list" data-step-list></ul>
+              <div class="divider"></div>
+              <div class="status-row">
+                <span class="step-pill step-pill--active" data-step-pill>Paso 1 de 7</span>
+                <span class="status-chip">DEMO SIMULADO</span>
+              </div>
+            </aside>
+            <section class="demo-stage">
+              <div class="demo-header">
+                <div>
+                  <span class="eyebrow">Clinica Dr. Mendez</span>
+                  <h2 style="margin-top: 14px;" data-demo-title>Dashboard</h2>
+                </div>
+                <div class="stack">
+                  <button class="button button--ghost" type="button" data-demo-toast>Compartir demo</button>
+                  <a class="button button--primary" href="#preview-root" data-next-step>Continuar</a>
+                </div>
+              </div>
+              <div class="demo-body" data-demo-body></div>
+            </section>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer__panel">
+          <span>Docti Preview</span>
+          <span>Seven-step public workflow rebuilt as an interactive narrative</span>
+        </div>
+      </footer>
+    </div>
+    <script src="/data/preview-data.js"></script>
+    <script src="/scripts/preview.js"></script>
+  </body>
+</html>
