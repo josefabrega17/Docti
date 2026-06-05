@@ -562,7 +562,7 @@ a {
 .pdf-ready,
 .message-box,
 .search-box,
-doctor-result {
+.doctor-result {
   border: 1px solid var(--line);
   border-radius: 14px;
   background: #f7f7fb;
