@@ -1,99 +1,183 @@
 const data = window.doctiPreviewData;
-
-const state = {
-  step: 0,
-  patientId: data.patients[0].id,
-  protocol: data.protocols[1],
-  voiceTab: "consulta",
-};
-
-const steps = [
-  { id: "dashboard", label: "Dashboard" },
-  { id: "consulta", label: "Nueva Consulta" },
-  { id: "motivo", label: "Motivo / Protocolo" },
-  { id: "nota", label: "Nota Medica" },
-  { id: "expediente", label: "Expediente" },
-  { id: "calendario", label: "Calendario" },
-  { id: "voz", label: "Recetas & Voz" },
-];
-
 const root = document.querySelector("[data-preview-root]");
 
-function selectedPatient() {
-  return data.patients.find((patient) => patient.id === state.patientId) || data.patients[0];
+const state = {
+  step: 1,
+  patientId: "ana",
+  protocol: "Rinitis alérgica",
+};
+
+function patient() {
+  return data.patients.find((item) => item.id === state.patientId) || data.patients[0];
 }
 
-function renderStepList() {
-  const target = root.querySelector("[data-step-list]");
+function stepState(index) {
+  if (index < state.step) return "done";
+  if (index === state.step) return "active";
+  return "pending";
+}
 
-  target.innerHTML = steps
+function renderSidebar() {
+  const nav = root.querySelector("[data-step-list]");
+
+  nav.innerHTML = data.steps
+    .map((label, index) => {
+      const status = stepState(index);
+      return `
+        <button class="preview-step preview-step--${status}" type="button" data-go-step="${index}">
+          <span>${status === "done" ? "✓" : index + 1}</span>
+          <strong>${label}</strong>
+        </button>
+      `;
+    })
+    .join("");
+}
+
+function renderHeader() {
+  root.querySelector("[data-demo-title]").textContent = data.steps[state.step];
+  root.querySelector("[data-demo-context]").textContent = `${data.steps[state.step]} ${state.step + 1} / ${data.steps.length}`;
+  root.querySelector("[data-prev-step]").disabled = state.step === 0;
+  root.querySelector("[data-next-step]").textContent =
+    state.step === data.steps.length - 1 ? "Finalizar demo" : "Siguiente →";
+}
+
+function renderInnerSteps() {
+  const labels = ["Paciente", "Motivo", "Nota"];
+  const active = state.step <= 1 ? 0 : state.step === 2 ? 1 : 2;
+
+  root.querySelector("[data-inner-steps]").innerHTML = labels
     .map(
-      (step, index) => `
-        <li>
-          <button type="button" data-step-index="${index}" aria-current="${index === state.step ? "step" : "false"}">
-            ${index + 1}. ${step.label}
-          </button>
-        </li>
+      (label, index) => `
+        <span class="${index === active ? "is-active" : ""}">
+          <b>${index + 1}</b> ${label}
+        </span>
       `
     )
     .join("");
 }
 
-function renderHeader() {
-  root.querySelector("[data-step-pill]").textContent = `Paso ${state.step + 1} de ${steps.length}`;
-  root.querySelector("[data-demo-title]").textContent = steps[state.step].label;
-}
-
 function dashboardTemplate() {
   return `
-    <div class="toolbar">
+    <div class="preview-grid preview-grid--metrics">
       ${data.metrics
         .map(
           (metric) => `
-            <div class="surface">
-              <div class="metric__value">${metric.value}</div>
-              <div class="metric__label">${metric.label}</div>
-            </div>
+            <article class="preview-card preview-metric">
+              <strong>${metric.value}</strong>
+              <span>${metric.label}</span>
+            </article>
           `
         )
         .join("")}
     </div>
-    <div class="grid-2" style="margin-top:16px;">
-      <div class="surface">
-        <h4>Consultas recientes</h4>
-        <ul class="list">
-          ${data.recentConsultations.map((item) => `<li>${item}</li>`).join("")}
-        </ul>
-      </div>
-      <div class="surface">
-        <h4>Acciones rapidas</h4>
-        <div class="stack">
-          <a class="button button--primary" href="#preview-root" data-next-step>Nueva consulta</a>
-          <button class="button button--ghost" type="button" data-demo-toast>Reagendar no-shows</button>
-          <button class="button button--ghost" type="button" data-demo-toast>Enviar recordatorios</button>
-        </div>
-        <p class="inline-note">La version publica enfatiza velocidad operativa, seguimiento y menos carga administrativa para el medico.</p>
-      </div>
+    <div class="preview-grid">
+      <article class="preview-card">
+        <h2>Resumen de hoy</h2>
+        <p>Tu agenda, pacientes activos y tareas de seguimiento en una sola vista.</p>
+      </article>
+      <article class="preview-card">
+        <h2>Próxima acción</h2>
+        <p>Inicia una nueva consulta y deja que Docti estructure la nota clínica.</p>
+        <button type="button" class="preview-primary" data-go-step="1">Nueva Consulta</button>
+      </article>
     </div>
   `;
 }
 
 function consultationTemplate() {
   return `
-    <div class="surface">
-      <h4>Selecciona un paciente</h4>
-      <p class="inline-note">Este paso recrea la entrada a una nueva consulta dentro de Docti Pro.</p>
-      <div class="patient-grid" style="margin-top:16px;">
+    <div class="preview-card">
+      <h1>Seleccionar Paciente</h1>
+      <label class="preview-search">Buscar paciente...</label>
+      <div class="preview-patient-list">
         ${data.patients
           .map(
-            (patient) => `
-              <article class="patient-card ${patient.id === state.patientId ? "is-selected" : ""}">
-                <button type="button" data-patient-id="${patient.id}">
-                  <strong>${patient.name}</strong>
-                  <p class="inline-note">${patient.age} anos · ${patient.tag}</p>
-                  <span class="status-chip">${patient.status}</span>
+            (item) => `
+              <button class="${item.id === state.patientId ? "is-selected" : ""}" type="button" data-patient="${item.id}">
+                <span>
+                  <strong>${item.name}</strong>
+                  <small>${item.email}</small>
+                </span>
+                <b>${item.status}</b>
+              </button>
+            `
+          )
+          .join("")}
+      </div>
+      <div class="preview-card__footer">
+        <span>Paciente seleccionado: <strong>${patient().name}</strong></span>
+        <button type="button" class="preview-primary" data-go-step="2">Continuar con ${patient().name} →</button>
+      </div>
+    </div>
+  `;
+}
+
+function protocolTemplate() {
+  return `
+    <div class="preview-grid">
+      <article class="preview-card">
+        <h2>${patient().name}</h2>
+        <p>${patient().email}</p>
+        <p class="preview-muted">Estado actual: ${patient().status}</p>
+      </article>
+      <article class="preview-card">
+        <h1>Motivo / Protocolo</h1>
+        <div class="preview-options">
+          ${data.protocols
+            .map(
+              (item) => `
+                <button class="${item === state.protocol ? "is-selected" : ""}" type="button" data-protocol="${item}">
+                  ${item}
                 </button>
-              </article>
+              `
+            )
+            .join("")}
+        </div>
+        <button type="button" class="preview-primary" data-go-step="3">Generar nota médica →</button>
+      </article>
+    </div>
+  `;
+}
+
+function noteTemplate() {
+  return `
+    <div class="preview-grid">
+      <article class="preview-card">
+        <h2>Resumen automático</h2>
+        <ul class="preview-list">
+          ${data.note.summary.map((item) => `<li>${item}</li>`).join("")}
+          <li>Protocolo: ${state.protocol}</li>
+        </ul>
+      </article>
+      <article class="preview-card">
+        <h1>Nota Médica</h1>
+        <div class="soap-note">
+          <p><strong>S:</strong> ${data.note.soap.s}</p>
+          <p><strong>O:</strong> ${data.note.soap.o}</p>
+          <p><strong>A:</strong> ${data.note.soap.a}</p>
+          <p><strong>P:</strong> ${data.note.soap.p}</p>
+        </div>
+        <div class="preview-card__footer">
+          <button type="button">Enviar por WhatsApp</button>
+          <button type="button" class="preview-primary" data-go-step="4">Guardar en expediente</button>
+        </div>
+      </article>
+    </div>
+  `;
+}
+
+function expedienteTemplate() {
+  return `
+    <div class="preview-card">
+      <h1>Expediente / Pipeline</h1>
+      <div class="preview-kanban">
+        ${Object.entries(data.kanban)
+          .map(
+            ([stage, names]) => `
+              <section>
+                <h3>${stage}</h3>
+                ${names.map((name) => `<p>${name}</p>`).join("")}
+              </section>
             `
           )
           .join("")}
@@ -102,141 +186,47 @@ function consultationTemplate() {
   `;
 }
 
-function protocolTemplate() {
-  const patient = selectedPatient();
-
-  return `
-    <div class="grid-2">
-      <div class="surface">
-        <h4>Resumen del paciente</h4>
-        <p><strong>${patient.name}</strong></p>
-        <p class="inline-note">${patient.age} anos · Estado actual: ${patient.status}</p>
-        <div class="divider"></div>
-        <p class="inline-note">Contexto de visita anterior: ${patient.tag}. Flujo optimizado para iniciar la documentacion clinica con menos friccion.</p>
-      </div>
-      <div class="surface">
-        <h4>Motivo / protocolo</h4>
-        <div class="protocol-list">
-          ${data.protocols
-            .map(
-              (protocol) => `
-                <button type="button" data-protocol="${protocol}" class="${protocol === state.protocol ? "is-selected" : ""}">
-                  ${protocol}
-                </button>
-              `
-            )
-            .join("")}
-        </div>
-        <div class="stack" style="margin-top:16px;">
-          <button class="button button--soft" type="button" data-go-step="6">Abrir demo de voz</button>
-          <button class="button button--primary" type="button" data-go-step="3">Generar nota medica</button>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function noteTemplate() {
-  return `
-    <div class="note-grid">
-      <aside class="surface">
-        <h4>Ficha de consulta</h4>
-        <ul class="list">
-          ${data.note.summary.map((item) => `<li>${item}</li>`).join("")}
-          <li>Protocolo: ${state.protocol}</li>
-        </ul>
-      </aside>
-      <section class="surface">
-        <h4>Nota SOAP</h4>
-        <p><strong>Subjetivo:</strong> ${data.note.soap.subjective}</p>
-        <p><strong>Objetivo:</strong> ${data.note.soap.objective}</p>
-        <p><strong>Analisis:</strong> ${data.note.soap.assessment}</p>
-        <p><strong>Plan:</strong> ${data.note.soap.plan}</p>
-        <div class="stack" style="margin-top:18px;">
-          <button class="button button--ghost" type="button" data-demo-toast>Enviar por email</button>
-          <button class="button button--ghost" type="button" data-demo-toast>Enviar por WhatsApp</button>
-          <button class="button button--ghost" type="button" data-demo-toast>Descargar PDF</button>
-          <button class="button button--primary" type="button" data-go-step="4">Ver expediente</button>
-        </div>
-      </section>
-    </div>
-  `;
-}
-
-function expedienteTemplate() {
-  return `
-    <div class="kanban">
-      ${Object.entries(data.kanban)
-        .map(
-          ([stage, names]) => `
-            <section class="kanban-column">
-              <h4>${stage}</h4>
-              ${names
-                .map(
-                  (name) => `
-                    <div class="surface" style="margin-top:10px; box-shadow:none;">
-                      <strong>${name}</strong>
-                    </div>
-                  `
-                )
-                .join("")}
-            </section>
-          `
-        )
-        .join("")}
-    </div>
-  `;
-}
-
 function calendarTemplate() {
   return `
-    <div class="calendar">
-      ${data.calendar
-        .map(
-          (day) => `
-            <section class="calendar-slot">
-              <h4>${day.day}</h4>
-              <ul class="list">
-                ${day.slots.map((slot) => `<li>${slot}</li>`).join("")}
-              </ul>
-            </section>
-          `
-        )
-        .join("")}
+    <div class="preview-card">
+      <h1>Calendario</h1>
+      <div class="preview-calendar">
+        ${data.calendar
+          .map(
+            (day) => `
+              <section>
+                <h3>${day.day}</h3>
+                ${day.slots.map((slot) => `<p>${slot}</p>`).join("")}
+              </section>
+            `
+          )
+          .join("")}
+      </div>
     </div>
   `;
 }
 
 function voiceTemplate() {
-  const voice = data.voice[state.voiceTab];
-
   return `
-    <div class="surface" style="margin-bottom:16px;">
-      <div class="voice-tabs">
-        <button type="button" class="voice-tab ${state.voiceTab === "consulta" ? "is-active" : ""}" data-voice-tab="consulta">Consulta</button>
-        <button type="button" class="voice-tab ${state.voiceTab === "receta" ? "is-active" : ""}" data-voice-tab="receta">Receta medica</button>
-      </div>
-      <p class="inline-note" style="margin-top:14px;">DEMO SIMULADO. Este flujo conserva la narrativa publica sin prometer infraestructura clinica real.</p>
-    </div>
-    <div class="voice-panels">
-      <section class="voice-card">
-        <h4>${voice.headline}</h4>
-        <p class="transcript">${voice.transcript}</p>
-      </section>
-      <section class="voice-card">
-        <h4>Salida generada</h4>
-        <p class="transcript">${voice.output}</p>
-        <div class="stack" style="margin-top:18px;">
-          <button class="button button--ghost" type="button" data-demo-toast>Usar en nota</button>
-          <button class="button button--primary" type="button" data-demo-toast>Emitir documento</button>
+    <div class="preview-grid">
+      <article class="preview-card">
+        <span class="preview-badge">DEMO SIMULADO</span>
+        <h1>Recetas & Voz</h1>
+        <div class="voice-wave">
+          <span></span><span></span><span></span><span></span><span></span>
         </div>
-      </section>
+        <p class="preview-transcript">${data.voice.transcript}</p>
+      </article>
+      <article class="preview-card">
+        <h2>Documento generado</h2>
+        <p>${data.voice.prescription}</p>
+        <button type="button" class="preview-primary">Nota médica lista en 00:05</button>
+      </article>
     </div>
   `;
 }
 
 function renderBody() {
-  const body = root.querySelector("[data-demo-body]");
   const templates = [
     dashboardTemplate,
     consultationTemplate,
@@ -247,85 +237,45 @@ function renderBody() {
     voiceTemplate,
   ];
 
-  body.innerHTML = templates[state.step]();
-}
-
-function attachEvents() {
-  root.querySelectorAll("[data-step-index]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.step = Number(button.dataset.stepIndex);
-      render();
-    });
-  });
-
-  root.querySelectorAll("[data-next-step]").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.preventDefault();
-      state.step = Math.min(state.step + 1, steps.length - 1);
-      render();
-    });
-  });
-
-  root.querySelectorAll("[data-go-step]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.step = Number(button.dataset.goStep);
-      render();
-    });
-  });
-
-  root.querySelectorAll("[data-patient-id]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.patientId = button.dataset.patientId;
-      render();
-    });
-  });
-
-  root.querySelectorAll("[data-protocol]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.protocol = button.dataset.protocol;
-      render();
-    });
-  });
-
-  root.querySelectorAll("[data-voice-tab]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.voiceTab = button.dataset.voiceTab;
-      render();
-    });
-  });
-
-  document.querySelectorAll("[data-demo-toast]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const toast = document.createElement("div");
-      toast.textContent = "Accion simulada para el demo publico.";
-      toast.setAttribute(
-        "style",
-        [
-          "position:fixed",
-          "right:24px",
-          "bottom:24px",
-          "background:#0d1b2a",
-          "color:white",
-          "padding:12px 16px",
-          "border-radius:16px",
-          "font-family:Instrument Sans, sans-serif",
-          "font-size:14px",
-          "box-shadow:0 18px 36px rgba(13,27,42,0.22)",
-          "z-index:30",
-        ].join(";")
-      );
-
-      document.body.appendChild(toast);
-      window.setTimeout(() => toast.remove(), 2200);
-    });
-  });
+  root.querySelector("[data-demo-body]").innerHTML = templates[state.step]();
 }
 
 function render() {
-  renderStepList();
+  renderSidebar();
   renderHeader();
+  renderInnerSteps();
   renderBody();
-  attachEvents();
 }
+
+root.addEventListener("click", (event) => {
+  const goStep = event.target.closest("[data-go-step]");
+  const patientButton = event.target.closest("[data-patient]");
+  const protocolButton = event.target.closest("[data-protocol]");
+
+  if (goStep) {
+    state.step = Number(goStep.dataset.goStep);
+    render();
+  }
+
+  if (patientButton) {
+    state.patientId = patientButton.dataset.patient;
+    render();
+  }
+
+  if (protocolButton) {
+    state.protocol = protocolButton.dataset.protocol;
+    render();
+  }
+});
+
+root.querySelector("[data-prev-step]").addEventListener("click", () => {
+  state.step = Math.max(0, state.step - 1);
+  render();
+});
+
+root.querySelector("[data-next-step]").addEventListener("click", () => {
+  state.step = state.step === data.steps.length - 1 ? 0 : state.step + 1;
+  render();
+});
 
 render();
