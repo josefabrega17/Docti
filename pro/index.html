@@ -1,140 +1,309 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Docti Pro | Productividad para doctores y clinicas</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Docti Pro | Menos administración. Más medicina.</title>
     <meta
       name="description"
-      content="Pagina doctor-facing de Docti Pro: consulta, nota medica, recetas, expediente, calendario y seguimiento."
+      content="Agenda, atiende, documenta y da seguimiento a tus pacientes sin fricción con Docti Pro."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/theme.css" />
   </head>
   <body>
-    <div class="site-shell">
-      <nav class="nav">
-        <div class="nav__inner">
-          <a class="brand" href="/">
-            <span class="brand__mark">D</span>
-            <span>Docti</span>
+    <div class="docti-page">
+      <header class="topbar">
+        <div class="topbar__inner">
+          <a class="brand" href="/" aria-label="Docti inicio">
+            <span class="brand__mark">d</span>
+            <span class="brand__word">Docti<span class="brand__accent">Pro</span></span>
           </a>
-          <div class="nav__links">
-            <a href="/">Inicio</a>
-            <a href="/connect/">Docti Connect</a>
-            <a href="/preview/">Demo</a>
-          </div>
-          <div class="nav__cta">
-            <a class="button button--ghost" href="/connect/">Soy paciente</a>
-            <a class="button button--primary" href="/preview/">Ver demo</a>
+          <nav class="topbar__links" aria-label="Navegación principal">
+            <a href="/preview/">Demo interactivo</a>
+            <a href="/connect/">Portal pacientes</a>
+            <a href="#funcionalidades">Funcionalidades</a>
+          </nav>
+          <div class="topbar__actions">
+            <a class="btn btn--orange" href="#acceso">Solicitar Acceso</a>
           </div>
         </div>
-      </nav>
+      </header>
 
       <main>
-        <section class="section hero">
-          <div>
-            <span class="eyebrow">Docti Pro</span>
-            <h1>Una consulta mejor organizada desde la primera palabra.</h1>
-            <p class="lede">
-              Docti Pro esta pensado para medicos y clinicas que quieren reducir trabajo
-              administrativo, capturar mejor cada consulta y mantener seguimiento sin romper su ritmo.
+        <section class="section center">
+          <div class="container--narrow">
+            <span class="eyebrow">✦ Acceso anticipado · Panamá</span>
+            <h1 class="hero-title">
+              Menos administración.<br />
+              <span class="accent">Más medicina.</span>
+            </h1>
+            <p class="lead">
+              Agenda, atiende, documenta y da seguimiento a tus pacientes sin fricción.
             </p>
-            <div class="hero__actions">
-              <a class="button button--primary" href="/preview/">Abrir demo interactivo</a>
-              <a class="button button--ghost" href="#capabilities" data-scroll-target="capabilities">Ver capacidades</a>
+
+            <ul class="hero-checks">
+              <li>Recetas y resumen de consulta por voz en segundos</li>
+              <li>Seguimiento automático por WhatsApp</li>
+              <li>CRM visual de pacientes</li>
+              <li>Integración con tu calendario</li>
+            </ul>
+
+            <div class="hero-actions">
+              <a class="btn btn--orange btn--large" href="#acceso">Solicitar Acceso Temprano <span>→</span></a>
+              <a class="btn btn--outline-blue btn--large" href="/preview/">Ver Demo Interactivo</a>
             </div>
-            <div class="hero-badges">
-              <span class="pill">Notas SOAP</span>
-              <span class="pill">Recetas</span>
-              <span class="pill">Calendario</span>
-              <span class="pill">Seguimiento</span>
+
+            <div class="metric-row" aria-label="Métricas de ejemplo">
+              <article class="mini-metric">
+                <strong class="blue">8</strong>
+                <span>Citas Hoy</span>
+              </article>
+              <article class="mini-metric">
+                <strong class="orange">42</strong>
+                <span>Consultas Completadas</span>
+              </article>
+              <article class="mini-metric">
+                <strong class="green">89</strong>
+                <span>Pacientes Activos</span>
+              </article>
+              <article class="mini-metric">
+                <strong>4</strong>
+                <span>Por Revisar</span>
+              </article>
             </div>
           </div>
+        </section>
 
-          <div class="panel">
-            <div class="stack">
-              <div class="surface">
-                <h4>Flujo principal</h4>
-                <p class="inline-note">Nueva consulta, motivo/protocolo, nota medica, expediente, calendario y acciones de envio.</p>
-              </div>
-              <div class="surface">
-                <h4>Promesa de valor</h4>
-                <p class="inline-note">Menos tiempo perdido en documentacion y mas continuidad sobre el estado del paciente.</p>
-              </div>
-              <div class="surface">
-                <h4>Canales visibles</h4>
-                <div class="pill-row">
-                  <span class="status-chip">PDF</span>
-                  <span class="status-chip">Email</span>
-                  <span class="status-chip">WhatsApp</span>
+        <section class="section center">
+          <div class="container--narrow">
+            <span class="eyebrow eyebrow--orange">El día a día</span>
+            <h2 class="section-title">¿Te suena familiar?</h2>
+            <div class="pain-grid">
+              <article class="soft-card">
+                <span class="tiny-icon">cal</span>
+                <p>Pacientes que <strong>no llegan a su cita</strong> (ausencias)</p>
+              </article>
+              <article class="soft-card">
+                <span class="tiny-icon">ag</span>
+                <p><strong>Agenda desordenada</strong> y espacios difíciles de llenar</p>
+              </article>
+              <article class="soft-card">
+                <span class="tiny-icon">wa</span>
+                <p><strong>Seguimiento manual</strong> por WhatsApp que consume horas cada semana</p>
+              </article>
+              <article class="soft-card">
+                <span class="tiny-icon">hr</span>
+                <p><strong>Horas perdidas</strong> en tareas administrativas en lugar de atender pacientes</p>
+              </article>
+              <article class="soft-card soft-card--wide">
+                <span class="tiny-icon">doc</span>
+                <p><strong>Expedientes dispersos</strong> o notas hechas en Word</p>
+              </article>
+            </div>
+            <p class="blue-line">Docti fue creado para eliminar exactamente eso.</p>
+          </div>
+        </section>
+
+        <section class="section section--white center">
+          <div class="container--narrow">
+            <span class="eyebrow eyebrow--orange">Impacto real</span>
+            <h2 class="section-title">Cada ausencia es dinero perdido</h2>
+            <article class="impact-card">
+              <p>Si tienes <strong>5 ausencias al mes</strong>, estás perdiendo entre</p>
+              <div class="impact-card__money">$100 <span>a</span> $500</div>
+              <p>
+                USD al mes en ingresos que no recuperas. Con recordatorios automáticos por
+                WhatsApp y correo, Docti reduce las ausencias hasta un <strong class="green-text">78%</strong>.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section section--soft" id="funcionalidades">
+          <div class="container">
+            <div class="center">
+              <span class="eyebrow">Funcionalidades Docti Pro</span>
+              <h2 class="section-title">Todo lo que necesitas para crecer</h2>
+            </div>
+
+            <div class="feature-stack">
+              <article class="feature-row">
+                <div class="mock-card voice-mock">
+                  <div class="recording-line">
+                    <span class="mic-dot">mic</span>
+                    <div>
+                      <strong>Grabando...</strong>
+                      <span>0:12 seg</span>
+                    </div>
+                    <span class="bars">▮▮▮</span>
+                  </div>
+                  <div class="transcript-box">
+                    <strong>Transcripción</strong>
+                    <p>"Paciente femenina, 34 años. Diagnóstico: rinitis alérgica. Receto loratadina 10mg cada 24 horas por 14 días..."</p>
+                  </div>
+                  <div class="pdf-row">
+                    <strong>Receta_Rinitis.pdf</strong>
+                    <span>Lista para enviar</span>
+                  </div>
                 </div>
-              </div>
+                <div class="feature-copy">
+                  <span class="eyebrow eyebrow--orange">Automatización</span>
+                  <h3>Recetas médicas por voz en 30 segundos</h3>
+                  <p>
+                    Dicta recetas, notas médicas o fechas de próximas citas. Docti transcribe,
+                    estructura y genera el PDF listo para enviar, sin tocar el teclado.
+                  </p>
+                  <ul class="check-list">
+                    <li><strong>Acción:</strong> Habla y Docti transcribe con 99%+ de precisión en español</li>
+                    <li><strong>Resultado:</strong> PDF profesional con logo, membrete y formato clínico en 30 seg</li>
+                    <li><strong>Impacto:</strong> Elimina 40+ minutos diarios de documentación manual</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="feature-row">
+                <div class="mock-card pipeline-mock">
+                  <strong>Pipeline de Pacientes</strong>
+                  <div class="pipeline-grid">
+                    <span>Nuevo p...</span><span>Progra...</span><span>En cons...</span><span>Seguimie...</span>
+                    <p>Ana<br />García</p><p>María<br />Ruiz</p><p>Pedro<br />Salcedo</p><p>Carmen<br />López</p>
+                    <p>Luis<br />Torres</p><p></p><p></p><p>J.<br />Morales</p>
+                  </div>
+                </div>
+                <div class="feature-copy">
+                  <span class="eyebrow">Flujo clínico</span>
+                  <h3>Conoce el estado de cada paciente en tiempo real</h3>
+                  <p>
+                    Visualiza quién está en espera, en consulta o en seguimiento. Todo conectado
+                    con tu agenda.
+                  </p>
+                  <ul class="check-list">
+                    <li><strong>Acción:</strong> Pipeline kanban configurado para flujos médicos</li>
+                    <li><strong>Resultado:</strong> Sincronización bidireccional con Google Calendar</li>
+                    <li><strong>Impacto:</strong> Cero pacientes perdidos por falta de seguimiento</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="feature-row">
+                <div class="mock-card whatsapp-mock">
+                  <div class="chat-head">
+                    <span>wa</span>
+                    <div><strong>Clínica Dr. Méndez</strong><small>En línea</small></div>
+                  </div>
+                  <p class="bubble">Hola María, le recuerda que tiene cita el martes 25 a las 10:00am con el Dr. Méndez.</p>
+                  <p class="bubble bubble--right">Muchas gracias! Confirmo asistencia ✓</p>
+                  <p class="bubble">Perfecto. Le enviaremos instrucciones pre consulta por email. ¿Alguna duda?</p>
+                  <div class="auto-note">Enviado automáticamente · 48h antes</div>
+                </div>
+                <div class="feature-copy">
+                  <span class="eyebrow eyebrow--green">Automatización</span>
+                  <h3>Seguimiento Automático Sin Esfuerzo Manual</h3>
+                  <p>
+                    Docti envía recordatorios de citas, seguimientos post-consulta y mensajes a
+                    pacientes, todo de forma automática, como si lo hicieras tú.
+                  </p>
+                  <p class="blue-line blue-line--left">Reduce ausencias con recordatorios automáticos por WhatsApp y correo.</p>
+                  <ul class="check-list">
+                    <li><strong>Acción:</strong> Recordatorios automáticos por WhatsApp y correo con tu marca</li>
+                    <li><strong>Resultado:</strong> Recordatorios 7 días, 72h y 24h antes de cada consulta</li>
+                    <li><strong>Impacto:</strong> Menos ausencias y mejor continuidad en el cuidado del paciente</li>
+                  </ul>
+                </div>
+              </article>
             </div>
           </div>
         </section>
 
-        <section class="section" id="capabilities">
-          <div class="section-heading">
-            <div>
-              <span class="eyebrow">Capacidades</span>
-              <h2>Lo que Docti Pro comunica como flujo ideal del consultorio</h2>
-            </div>
-            <p class="section-copy">
-              Esta pagina conserva la narrativa publica del producto doctor-facing, pero la organiza de
-              forma mas clara y mas convincente.
+        <section class="section center">
+          <div class="container">
+            <span class="eyebrow">Acceso anticipado</span>
+            <h2 class="section-title">Construido para clínicas panameñas</h2>
+            <p class="lead">
+              Estamos en pre-lanzamiento. Únete al acceso anticipado y ayúdanos a construir
+              la herramienta que las clínicas en Panamá realmente necesitan.
             </p>
-          </div>
-          <div class="grid-3">
-            <article class="card">
-              <h3>Consulta guiada</h3>
-              <p>Seleccion de paciente, motivo de visita y protocolo para iniciar la consulta con contexto.</p>
-            </article>
-            <article class="card">
-              <h3>Nota medica generada</h3>
-              <p>Estructura SOAP con acciones de compartir, descargar y guardar dentro del expediente.</p>
-            </article>
-            <article class="card">
-              <h3>Operacion diaria</h3>
-              <p>Calendario semanal, seguimiento de no-shows y pipeline de pacientes por etapa.</p>
-            </article>
+
+            <div class="testimonial-grid">
+              <article class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>
+                  “Desde que usamos Docti, proveer cotizaciones de nuestros tratamientos se ha
+                  vuelto mucho más ágil y eficiente: ahora no toma más de 5 minutos. Esto nos
+                  permite entregar a los pacientes su cotización en mano inmediatamente después
+                  de la consulta, mejorando significativamente su experiencia y optimizando nuestro
+                  flujo de trabajo.”
+                </p>
+                <div class="person"><span>LA</span><strong>Lucia Avila</strong><small>Gerente Comercial · Biogenesis</small></div>
+              </article>
+              <article class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>
+                  “Antes perdía cupos por reprogramaciones a último minuto o por olvido del
+                  paciente. Con los recordatorios automáticos de Docti evito cancelaciones y mi
+                  agenda permanece llena.”
+                </p>
+                <div class="person person--orange"><span>AD</span><strong>Ana Laura Díaz</strong><small>Medicina General · FDSalud</small></div>
+              </article>
+            </div>
+
+            <div class="value-grid">
+              <article class="value-card"><span class="tiny-icon">pin</span><h3>Construido en Panamá</h3><p>Diseñado con clínicas locales, en español, para el flujo de trabajo panameño.</p></article>
+              <article class="value-card"><span class="tiny-icon">mic</span><h3>Voz primero</h3><p>Documenta consultas hablando, no escribiendo. Recetas y notas clínicas en español.</p></article>
+              <article class="value-card"><span class="tiny-icon green">gift</span><h3>Gratis durante el beta</h3><p>Sin tarjeta de crédito. Sin compromiso. Cancelas cuando quieras.</p></article>
+            </div>
           </div>
         </section>
 
-        <section class="section">
-          <div class="grid-2">
-            <article class="card">
-              <h3>Que gana el medico</h3>
-              <ul class="list list--check">
-                <li>Menos friccion para documentar cada consulta</li>
-                <li>Acceso mas rapido al historial operativo del paciente</li>
-                <li>Mejor seguimiento despues de la visita</li>
-                <li>Menos trabajo manual para coordinar recordatorios</li>
-              </ul>
-            </article>
-            <article class="card">
-              <h3>Que aun es demo publico</h3>
-              <ul class="list list--check">
-                <li>La transcripcion por voz se presenta como demo simulado</li>
-                <li>Las acciones de envio no implican integraciones reales en este repo</li>
-                <li>El calendario y expediente son interfaces reconstruidas, no backend clinico</li>
-                <li>Esta base esta pensada para convertirse despues en MVP funcional</li>
-              </ul>
-            </article>
+        <section class="section section--soft center">
+          <div class="container--narrow">
+            <span class="eyebrow">Pruébalo tú mismo</span>
+            <h2 class="section-title">Recorre Docti Pro a tu ritmo</h2>
+            <p class="lead">
+              Abre el demo interactivo y explora la voz, el flujo clínico y la documentación automatizada.
+              ¿Prefieres que te lo mostremos? Agenda una demo personalizada con nuestro equipo.
+            </p>
+
+            <div class="demo-card-grid">
+              <a class="demo-choice" href="/preview/"><span class="tiny-icon">cursor</span><h3>Demo interactivo</h3><small>~2 min · sin registro</small><p>Recorre las pantallas de Docti Pro con datos de muestra. Voz, flujo clínico, agenda y dashboard.</p><strong>Abrir demo interactivo →</strong></a>
+              <a class="demo-choice" href="#acceso"><span class="tiny-icon">cal</span><h3>Demo personalizada</h3><small>~20 min · con nuestro equipo</small><p>Te mostramos Docti Pro adaptado a tu especialidad y tu flujo de trabajo. Resolvemos tus preguntas en vivo.</p><strong class="orange-text">Solicitar demo personalizada →</strong></a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section center" id="acceso">
+          <div class="form-panel">
+            <span class="eyebrow eyebrow--orange">Acceso anticipado</span>
+            <h2>Únete a la lista de espera</h2>
+            <p>Sé de los primeros médicos en Panamá con acceso a Docti Pro. Sin costo durante el período beta.</p>
+            <form>
+              <label>Nombre completo<input value="Dr. Juan Pérez" /></label>
+              <label>Correo electrónico<input value="doctor@clinica.com" /></label>
+              <label>Nombre de la clínica<input value="Clínica San José" /></label>
+              <label>Tipo de clínica<select><option>Selecciona una especialidad</option></select></label>
+              <button class="btn btn--orange btn--large" type="button">Solicitar Acceso Temprano <span>→</span></button>
+            </form>
+            <small>Sin spam. Sin costo durante el beta. Puedes darte de baja cuando quieras.</small>
           </div>
         </section>
       </main>
 
-      <footer class="footer">
-        <div class="footer__panel">
-          <span>Docti Pro</span>
-          <span>Doctor workflow rebuilt as a polished public product page</span>
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div>
+            <a class="brand" href="/"><span class="brand__mark">d</span><span class="brand__word">Docti<span class="brand__accent">Pro</span></span></a>
+            <p>La plataforma de eficiencia clínica para médicos en Panamá.</p>
+          </div>
+          <div><strong>Producto</strong><a href="/preview/">Demo interactivo</a><a href="#acceso">Acceso anticipado</a><a href="#funcionalidades">Funcionalidades</a></div>
+          <div><strong>Empresa</strong><a href="#acceso">Contacto</a><a href="#">Privacidad</a><a href="#">Términos</a></div>
         </div>
+        <div class="container footer-bottom"><span>© 2026 Docti. Panamá. Todos los derechos reservados.</span><span>Privacidad · Términos</span></div>
       </footer>
     </div>
     <script src="/scripts/site.js"></script>
