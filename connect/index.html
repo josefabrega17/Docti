@@ -1,148 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Docti Connect | Encuentra y agenda con mas claridad</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Docti Connect | Tu médico, a un clic.</title>
     <meta
       name="description"
-      content="Pagina patient-facing de Docti Connect: busqueda de doctores, perfiles, disponibilidad, precios y reservas."
+      content="Encuentra médicos verificados en Panamá, consulta precios reales y agenda tu cita desde el teléfono."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/theme.css" />
   </head>
   <body>
-    <div class="site-shell">
-      <nav class="nav">
-        <div class="nav__inner">
-          <a class="brand" href="/">
-            <span class="brand__mark">D</span>
-            <span>Docti</span>
+    <div class="docti-page">
+      <header class="topbar">
+        <div class="topbar__inner">
+          <a class="brand" href="/" aria-label="Docti inicio">
+            <span class="brand__mark">d</span>
+            <span class="brand__word">Docti<span class="brand__accent">Connect</span></span>
           </a>
-          <div class="nav__links">
-            <a href="/">Inicio</a>
-            <a href="/pro/">Docti Pro</a>
-            <a href="/preview/">Demo</a>
-          </div>
-          <div class="nav__cta">
-            <a class="button button--ghost" href="/pro/">Soy doctor</a>
-            <a class="button button--primary" href="#directory" data-scroll-target="directory">Buscar doctores</a>
+          <nav class="topbar__links" aria-label="Navegación principal">
+            <a href="/pro/">Para médicos</a>
+          </nav>
+          <div class="topbar__actions">
+            <a class="btn btn--blue" href="#registro">Crear cuenta gratis</a>
           </div>
         </div>
-      </nav>
+      </header>
 
       <main>
-        <section class="section hero">
-          <div>
-            <span class="eyebrow">Docti Connect</span>
-            <h1>Encontrar atencion medica deberia sentirse menos confuso.</h1>
-            <p class="lede">
-              Docti Connect organiza la cara paciente del producto: descubrir medicos, revisar
-              disponibilidad, entender precios y reservar con mas confianza y menos friccion.
+        <section class="section center">
+          <div class="container--narrow">
+            <span class="eyebrow">Disponible en Panamá · Gratis</span>
+            <h1 class="hero-title">
+              Tu médico,<br />
+              <span class="accent">a un clic.</span>
+            </h1>
+            <p class="lead">
+              Encuentra médicos verificados en Panamá, consulta precios reales y agenda tu cita
+              directamente desde el teléfono. Sin llamadas. Sin esperas.
             </p>
-            <div class="hero__actions">
-              <a class="button button--primary" href="#directory" data-scroll-target="directory">Explorar directorio</a>
-              <a class="button button--ghost" href="/pro/">Ver lado doctor</a>
-            </div>
-            <div class="hero-badges">
-              <span class="pill">Especialidad</span>
-              <span class="pill">Ubicacion</span>
-              <span class="pill">Precio</span>
-              <span class="pill">Disponibilidad</span>
-            </div>
-          </div>
 
-          <div class="panel">
-            <div class="surface">
-              <h4>Experiencia reconstruida</h4>
-              <p class="inline-note">Directorio paciente con perfiles verificados, tarifas visibles y una llamada clara a reservar.</p>
+            <div class="mini-steps">
+              <span><strong>1</strong><b>Busca</b><small>Especialidad y zona</small></span>
+              <i>→</i>
+              <span><strong>2</strong><b>Revisa</b><small>Perfil y precios</small></span>
+              <i>→</i>
+              <span><strong>3</strong><b>Agenda</b><small>En segundos</small></span>
             </div>
-            <div class="grid-2" style="margin-top:16px;">
-              <div class="surface">
-                <h4>Confianza</h4>
-                <p class="inline-note">Perfiles, credenciales y una experiencia de agenda mas transparente.</p>
-              </div>
-              <div class="surface">
-                <h4>Continuidad</h4>
-                <p class="inline-note">Recordatorios y acceso a documentos como parte de la capa paciente del producto.</p>
-              </div>
+
+            <a class="btn btn--orange btn--large" href="#registro">Crear mi cuenta gratis <span>→</span></a>
+          </div>
+        </section>
+
+        <section class="section center">
+          <div class="container">
+            <span class="eyebrow eyebrow--orange">El problema real</span>
+            <h2 class="section-title">Encontrar un médico no debería ser complicado</h2>
+            <p class="lead">Millones de personas en Panamá enfrentan el mismo obstáculo cada vez que necesitan atención médica.</p>
+            <div class="problem-grid">
+              <article class="problem-card"><span class="tiny-icon">tel</span><strong>45 min</strong><b>Promedio por llamada</b><p>Llamar, esperar, que no haya disponibilidad, volver a llamar. Así se pierde media mañana buscando médico.</p></article>
+              <article class="problem-card"><span class="tiny-icon">?</span><strong>?</strong><b>En precios ocultos</b><p>Ninguna clínica publica sus precios. Llegas, te atienden, y al final te dicen cuánto cuesta.</p></article>
+              <article class="problem-card"><span class="tiny-icon">cal</span><strong>3-7 días</strong><b>De espera típica</b><p>Citas disponibles la próxima semana. Y si cancelas, empiezas de cero.</p></article>
             </div>
           </div>
         </section>
 
-        <section class="section" id="directory">
-          <div class="section-heading">
-            <div>
-              <span class="eyebrow">Directorio</span>
-              <h2>Una vista mas creible del marketplace paciente</h2>
+        <section class="section section--soft center">
+          <div class="container">
+            <span class="eyebrow">Cómo funciona</span>
+            <h2 class="section-title">Agenda tu médico en 3 pasos</h2>
+            <p class="lead">Sin llamadas telefónicas, sin sorpresas de precio, sin esperas innecesarias.</p>
+            <div class="flow-card-grid">
+              <article class="value-card"><span class="step-dot">1</span><span class="choice-card__icon choice-card__icon--blue">⌕</span><h3>Busca tu especialidad</h3><p>Filtra por especialidad, zona, precio y disponibilidad. Sin sorpresas.</p></article>
+              <article class="value-card"><span class="step-dot">2</span><span class="choice-card__icon choice-card__icon--orange">✓</span><h3>Revisa el perfil</h3><p>Credenciales verificadas, precios reales, reseñas de pacientes reales.</p></article>
+              <article class="value-card"><span class="step-dot">3</span><span class="choice-card__icon choice-card__icon--blue">cal</span><h3>Agenda directamente</h3><p>Elige el horario, confirma y listo. Recibes recordatorio automático.</p></article>
             </div>
-            <p class="section-copy">
-              En vez de una pagina generica, esta version muestra como la propuesta publica de Docti
-              Connect puede sentirse concreta y util al usuario final.
-            </p>
-          </div>
-          <div class="grid-3">
-            <article class="card">
-              <h3>Dra. Elena Paredes</h3>
-              <p>Endocrinologia · Ciudad de Panama · Desde $55</p>
-              <div class="pill-row">
-                <span class="status-chip">Disponible manana</span>
-                <span class="status-chip">Verificada</span>
-              </div>
-            </article>
-            <article class="card">
-              <h3>Dr. Ricardo Gomez</h3>
-              <p>Medicina general · Costa del Este · Desde $35</p>
-              <div class="pill-row">
-                <span class="status-chip">Consulta virtual</span>
-                <span class="status-chip">Agenda abierta</span>
-              </div>
-            </article>
-            <article class="card">
-              <h3>Dra. Sofia Morales</h3>
-              <p>Pediatria · San Francisco · Desde $48</p>
-              <div class="pill-row">
-                <span class="status-chip">Sabado disponible</span>
-                <span class="status-chip">Alta demanda</span>
-              </div>
-            </article>
           </div>
         </section>
 
-        <section class="section">
-          <div class="grid-2">
-            <article class="card">
-              <h3>Lo que deberia resolver para pacientes</h3>
-              <ul class="list list--check">
-                <li>Menos llamadas y menos mensajes para encontrar una cita</li>
-                <li>Precios y disponibilidad mas visibles antes de reservar</li>
-                <li>Mas confianza en la calidad del doctor que se agenda</li>
-                <li>Historial y documentos accesibles despues de la visita</li>
+        <section class="section section--white">
+          <div class="container feature-row">
+            <div class="mock-card search-mock">
+              <div class="search-bar"><span>⌕</span><strong>Cardiología</strong><small>Panamá Centro</small></div>
+              <div class="filter-row"><span>Disponible hoy ×</span><span>$30 - $80 ×</span><span>★ 4.5+ ×</span></div>
+              <strong class="result-count">12 médicos disponibles</strong>
+              <div class="doctor-mini"><span>JR</span><div><strong>Dr. Juan Reyes</strong><small>Cardiología · ★ 4.9</small></div><b>$60<small>Hoy</small></b></div>
+              <div class="doctor-mini"><span>LM</span><div><strong>Dra. Laura Mora</strong><small>Cardiología · ★ 4.7</small></div><b>$45<small>Hoy</small></b></div>
+              <div class="doctor-mini"><span>CV</span><div><strong>Dr. Carlos Vargas</strong><small>Cardiología · ★ 4.8</small></div><b>$70<small>Mañana</small></b></div>
+            </div>
+            <div class="feature-copy">
+              <span class="eyebrow">Vista previa · Búsqueda inteligente</span>
+              <h3>Filtra y encuentra a tu médico ideal</h3>
+              <p>Cardiología en Panamá Centro, con disponibilidad hoy y dentro de tu presupuesto. Resultados verificados en segundos.</p>
+              <ul class="check-list">
+                <li><strong>Acción:</strong> Filtra por especialidad, zona, precio y disponibilidad</li>
+                <li><strong>Resultado:</strong> Solo médicos verificados que cumplen tus criterios</li>
+                <li><strong>Impacto:</strong> Encuentras a tu médico ideal en menos de 2 minutos</li>
               </ul>
-            </article>
-            <article class="card">
-              <h3>Lo que esta representado en este repo</h3>
-              <ul class="list list--check">
-                <li>La narrativa publica del marketplace y sus filtros principales</li>
-                <li>Una experiencia visual mas fuerte que la pagina original</li>
-                <li>Perfiles y tarjetas como demostracion de UX, no como base de datos real</li>
-                <li>Una base clara para una futura reserva funcional</li>
-              </ul>
-            </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section center">
+          <div class="container">
+            <span class="eyebrow eyebrow--green">Vista previa · Idóneos y verificados</span>
+            <h2 class="section-title">Médicos idóneos y verificados</h2>
+            <p class="lead">Credenciales revisadas, precios publicados, disponibilidad en tiempo real.</p>
+            <div class="doctor-card-grid">
+              <article class="doctor-card"><div class="doctor-head"><span>AP</span><div><h3>Dra. Ana Pérez</h3><p>Medicina Regenerativa</p></div><b class="availability">Disponible</b></div><div class="tag-row"><span>Regenerativa</span><span>Anti-aging</span></div><p class="stars">★★★★★ <small>4.9 (38 reseñas)</small></p><hr /><small>Consulta desde</small><div class="price-line"><strong>$30</strong><a class="btn btn--blue" href="#registro">Ver disponibilidad</a></div></article>
+              <article class="doctor-card"><div class="doctor-head"><span class="orange-avatar">CR</span><div><h3>Dr. Carlos Ramírez</h3><p>Ortopedia</p></div><b class="availability">Disponible</b></div><div class="tag-row"><span>Ortopedia</span><span>Traumatología</span></div><p class="stars">★★★★★ <small>4.8 (52 reseñas)</small></p><hr /><small>Consulta desde</small><div class="price-line"><strong>$55</strong><a class="btn btn--blue" href="#registro">Ver disponibilidad</a></div></article>
+              <article class="doctor-card"><div class="doctor-head"><span class="dark-avatar">ML</span><div><h3>Dra. María López</h3><p>Medicina Estética</p></div><b class="availability availability--later">Próx. semana</b></div><div class="tag-row"><span>Estética</span><span>Botox</span></div><p class="stars">★★★★★ <small>4.9 (71 reseñas)</small></p><hr /><small>Consulta desde</small><div class="price-line"><strong>$80</strong><a class="btn btn--outline-blue" href="#registro">Ver disponibilidad</a></div></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--soft center">
+          <div class="container--narrow">
+            <span class="eyebrow">Tu experiencia</span>
+            <h2 class="section-title">Todo desde tu teléfono</h2>
+            <p class="lead">Docti Connect te acompaña antes, durante y después de tu consulta.</p>
+            <div class="experience-grid">
+              <article class="soft-card"><span class="tiny-icon green">✓</span><p><strong>Recordatorios automáticos</strong><br />Nunca olvides una cita. Recibes recordatorio por WhatsApp y correo antes de tu consulta.</p></article>
+              <article class="soft-card"><span class="tiny-icon">doc</span><p><strong>Información clara pre y post consulta</strong><br />Instrucciones de preparación, resumen de consulta y próximos pasos, todo en un solo lugar.</p></article>
+              <article class="soft-card"><span class="tiny-icon">act</span><p><strong>Seguimiento ordenado</strong><br />Historial de visitas, recetas y documentos organizados. Sin papeles perdidos.</p></article>
+              <article class="soft-card"><span class="tiny-icon">mob</span><p><strong>Hazlo todo desde tu móvil</strong><br />Busca, agenda, recibe recordatorios y accede a tu historial, desde cualquier lugar.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section center" id="registro">
+          <div class="form-panel">
+            <span class="eyebrow">Sin costo</span>
+            <h2>Crea tu cuenta gratis</h2>
+            <p>Accede a todos los médicos. Sin costo.</p>
+            <form>
+              <label>Nombre completo<input value="María García" /></label>
+              <label>Correo electrónico<input value="tu@correo.com" /></label>
+              <label>¿Qué tipo de médico buscas?<select><option>Selecciona una especialidad</option></select></label>
+              <button class="btn btn--orange btn--large" type="button">Crear mi cuenta gratis <span>→</span></button>
+            </form>
+            <small>Sin tarjeta de crédito · Sin compromisos</small>
           </div>
         </section>
       </main>
 
-      <footer class="footer">
-        <div class="footer__panel">
-          <span>Docti Connect</span>
-          <span>Patient-facing marketplace concept rebuilt for clarity and trust</span>
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div>
+            <a class="brand" href="/"><span class="brand__mark">d</span><span class="brand__word">Docti<span class="brand__accent">Connect</span></span></a>
+            <p>Tu médico verificado en Panamá, a un clic de distancia.</p>
+          </div>
+          <div><strong>Pacientes</strong><a href="#registro">Registrarse</a></div>
+          <div><strong>Médicos</strong><a href="/pro/">Para médicos</a><a href="#registro">Contacto</a></div>
         </div>
+        <div class="container footer-bottom"><span>© 2026 Docti. Panamá.</span><span>Privacidad · Términos</span></div>
       </footer>
     </div>
     <script src="/scripts/site.js"></script>
